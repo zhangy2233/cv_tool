@@ -41,9 +41,7 @@ function createWindow () {
   // 引入ipcMain
   require('./ipcMain')
 
-  mainWindow.on("resize",(e)=>{
-    console.log(1)
-  })
+  // 创建系统托盘
 }
 
 app.on('ready', createWindow)
