@@ -39,7 +39,7 @@ setInterval(() => {
     // 文本
     // console.log(1)
     let text_ret  = clipboard.read("public.file-url").replace("file://",'')
-    // console.log(2)
+    console.log(2, text_ret.length === 0)
     if (text_ret.length === 0) {
         console.log("发现文本")
     }
