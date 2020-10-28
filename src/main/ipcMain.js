@@ -9,9 +9,6 @@ ipcMain.on("action",(_,msg)=>{
             main_window.setSize(100,248)
             break
         case "mouseout":
-            // let setSize = debounce(main_window.setSize, 400);
-            // setSize(25, 240);
-            // console.log(debounce)
             setTimeout(()=>{
                 main_window.setSize(30,248)
             },200)
@@ -22,9 +19,9 @@ ipcMain.on("action",(_,msg)=>{
 
 // 设置一个定时器, 1000ms 监测一下粘贴板
 setInterval(() => {
-    let type = clipboard.availableFormats()
-    let text = clipboard.readText()
-    let img = clipboard.readImage();
+    // let type = clipboard.availableFormats()
+    // let text = clipboard.readText()
+    // let img = clipboard.readImage();
 
     // 图片
     // let img_ret = img.toDataURL().length > 22 &&
@@ -38,9 +35,10 @@ setInterval(() => {
 
     // 文本
     // console.log(1)
-    let text_ret  = clipboard.read("public.file-url").replace("file://",'')
-    console.log(2, text_ret.length === 0)
-    if (text_ret.length === 0) {
+    // let text_ret  = clipboard.read("public.file-url").replace("file://",'')
+    // let ret = text_ret.length === 0
+    console.log(2)
+    if (true) {
         console.log("发现文本")
     }
 
