@@ -1,5 +1,7 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow ,screen} from 'electron'
 
+// 隐藏dock
+app.dock.hide()
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -17,18 +19,26 @@ function createWindow () {
   /**
    * Initial window options
    */
+
+  let displays = screen.getAllDisplays()
+  let externalDisplay = displays.find((display) => {
+    return display.bounds.x !== 0 || display.bounds.y !== 0
+  })
+
   mainWindow = new BrowserWindow({
+    x: 0,
+    y: 500,
     useContentSize: false,
-    width:30,
-    height:248,
+    width:1120,
+    height:848,
     frame: false,  // 无边框
     transparent: true,  // 透明窗口
     alwaysOnTop: true,  // 一直在顶层
     focusable:false, // 禁止聚焦
     resizable:false,  // 禁止通过鼠标拖动放大缩小
     webPreferences: {
-      devTools: false,  // 调试模式
-      zoomFactor: 1
+      // devTools: false,  // 调试模式
+      enableRemoteModule:true  // 允许渲染进程使用 remote
     },
   });
 
@@ -40,9 +50,8 @@ function createWindow () {
 
   // 引入ipcMain
   require('./ipcMain')
-
-  // 创建系统托盘
 }
+
 
 app.on('ready', createWindow)
 

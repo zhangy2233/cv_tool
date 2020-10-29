@@ -23,6 +23,7 @@
         </li>
       </ul>
     </div>
+    <audio src="./res/16038905241968.mp3" ref="play_mp3"></audio>
     <router-view></router-view>
   </div>
 </template>
@@ -37,6 +38,12 @@
   export default {
     name: 'cv_tool',
 
+    created() {
+      this.$electron.ipcRenderer.on("play_mp3", () => {
+        let {play_mp3} = this.$refs;
+        play_mp3.play()
+      })
+    },
     methods:{
       action(action){
         // 发送事件 控制窗体变宽
@@ -63,7 +70,7 @@
   ul {
     list-style: none;
     height: 100%;
-    width: 30px;
+    width: 20px;
 
     user-select: none;
 
@@ -94,24 +101,24 @@
   }
 
   ul li:nth-child(1) {
-    background-color: rgb(121, 124, 136);
+    background-color: #CCCCCC;
     color: rgb(47, 62, 78);
   }
   ul li:nth-child(2) {
-    background-color: rgb(238, 67, 58);
+    background-color: #FF6666;
     color: rgb(233, 238, 239);
   }
   ul li:nth-child(3) {
-    background-color: rgb(244, 188, 47);
+    background-color: #FF9966;
     color: rgb(47, 62, 78);
   }
   ul li:nth-child(4) {
-    background-color: rgb(149, 79, 170);
+    background-color: #CC9999;
     color: rgb(233, 238, 239);
   }
 
   li:hover span{
-    animation: span 0.2s linear 0.3s 1 normal forwards;
+    animation: span 0.1s linear 0.1s 1 normal forwards;
   }
 
   @keyframes span{
