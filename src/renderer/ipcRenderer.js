@@ -3,10 +3,10 @@ import plist from "plist"
 import get_date from "../utils/date";
 import str_util from "../utils/str_util";
 import db from "../utils/datastore"
-
+let BrowserWindow = remote.BrowserWindow
+let Tray = remote.Tray
 
 let hasClipboardFiles = () => clipboard.has('NSFilenamesPboardType');
-
 
 setInterval(()=>{
     let type = null;  // 类型: 文件(file), 文件夹(files), 文本(text), 匿名图片(nimg), 图片(img), 组合文件和文件夹(files_paths)
@@ -108,31 +108,14 @@ let save_obj = (obj) => {
                 }
             }
 
+            // 保存成功
             db.insert(obj)
+            let [main_window] = BrowserWindow.getAllWindows();
+            main_window.webContents.send("play_mp3")
         });
-
-    // switch (type) {
-    //     case "text":
-    //         db.findOne()
-    //             .sort({"t": -1})
-    //             .exec((_, docs) => {
-    //
-    //
-    //             });
-    //         break;
-    //     case "nimg":
-    //         break;
-    //     case "img":
-    //         break;
-    //     case "file":
-    //         break;
-    //     case "files":
-    //         break;
-    //     case "files_paths":
-    //         break;
-    //
-    // }
-
-
-
 }
+
+
+// 系统托盘
+console.log(Tray)
+
