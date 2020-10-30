@@ -2,6 +2,7 @@ import { app, BrowserWindow ,screen} from 'electron'
 
 // 隐藏dock
 app.dock.hide()
+
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -20,17 +21,12 @@ function createWindow () {
    * Initial window options
    */
 
-  let displays = screen.getAllDisplays()
-  let externalDisplay = displays.find((display) => {
-    return display.bounds.x !== 0 || display.bounds.y !== 0
-  })
-
   mainWindow = new BrowserWindow({
     x: 0,
     y: 500,
     useContentSize: false,
-    width:1120,
-    height:848,
+    width:20,
+    height:248,
     frame: false,  // 无边框
     transparent: true,  // 透明窗口
     alwaysOnTop: true,  // 一直在顶层
@@ -49,7 +45,11 @@ function createWindow () {
   })
 
   // 引入ipcMain
-  require('./ipcMain')
+  require("./ipcMain")
+  // 引入系统托盘号
+  require("./tray")
+  // 引入剪切板监视器
+  require("./WatchClipboard")
 }
 
 

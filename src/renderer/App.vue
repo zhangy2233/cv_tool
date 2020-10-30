@@ -42,7 +42,7 @@
       this.$electron.ipcRenderer.on("play_mp3", () => {
         let {play_mp3} = this.$refs;
         play_mp3.play()
-      })
+      });
     },
     methods:{
       action(action){

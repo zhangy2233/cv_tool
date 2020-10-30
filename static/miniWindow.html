@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+			background-color: transparent;
+			font-family: "PingFang SC";
+			background-color: transparent;
+        }
+
+		@keyframes _{
+			0% {
+			}
+			50% {
+				transform: rotate(360deg) scale(1.6);
+			}
+			100% {
+				transform: rotate(720deg) scale(1);
+			}
+		}
+
+		.div1 {
+			position: relative;
+			/* background-color: rgba(214, 214, 214, 0.1); */
+			box-sizing: border-box;
+			width: 140px;
+			height: 80px;
+			margin: 5px;
+
+		}
+        .div2 {
+			position: absolute;
+            width: 18px;
+            height: 18px;
+            background-color: transparent;
+			border-radius: 50%;
+			top: 30px;
+			left: 20px;
+
+			border: #ffffff solid 2px;
+			border-bottom: transparent solid 1px;
+
+			transform-origin: 50% 50%;
+			animation: _ 0.6s linear 0.1s infinite normal forwards;
+        }
+		span {
+			position: absolute;
+			display: inline-block;
+			top: 28px;
+			left: 55px;
+            color: #ffffff;
+			font-size: 18px;
+		}
+		.filter {
+			position: absolute;
+			/* background-color: red; */
+			top:50%;
+			left:50%;
+			width: 80px;
+			height: 0px;
+			transform: translate(-50%, -50%);
+			box-shadow: 0 0 90px 5px rgba(225,200,200,.3);
+			z-index: -1;
+		}
+    </style>
+
+
+</head>
+<body>
+    <div class="div1">
+		<div class="div2"></div>
+		<span>已复制</span>
+		<div class="filter"></div>
+    </div>
+</body>
+
+<script>
+    document.addEventListener('mousewheel', (e) => {
+        e.preventDefault();
+        return false
+    });
+</script>
+</html>
